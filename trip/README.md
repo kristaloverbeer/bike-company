@@ -57,12 +57,12 @@ GET http://localhost:8082/ping
 
 To start a trip:
 ```python
-GET http://localhost:8082/v1/trips/bb3398hl52n3nnikkt90
+PUT http://localhost:8082/v1/trips/start/bb3398hl52n3nnikkt90
 ```
 
 To stop a trip:
 ```python
-GET http://localhost:8082/v1/trips/bb3398hl52n3nnikkt90
+PATCH http://localhost:8082/v1/trips/end/bb3398hl52n3nnikkt90
 ```
 
 ##TODO List

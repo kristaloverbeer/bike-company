@@ -60,6 +60,15 @@ To retrieve a bike:
 GET http://localhost:8080/v1/bikes/bb3398hl52n3nnikkt90
 ```
 
+To start a trip:
+```python
+PUT http://localhost:8080/v1/trips/start/bb3398hl52n3nnikkt90
+```
+
+To stop a trip:
+```python
+PATCH http://localhost:8080/v1/trips/end/bb3398hl52n3nnikkt90
+```
 
 ##TODO List
 
@@ -68,3 +77,4 @@ GET http://localhost:8080/v1/bikes/bb3398hl52n3nnikkt90
 - Performance tests
 - Better logging across the code base
 - Monitoring
+- Configuration class to more easily configure the different service to interact with
