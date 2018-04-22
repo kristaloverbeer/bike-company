@@ -181,6 +181,11 @@ To answer this problem (which can come up when for instance you want to apply yo
 it is highly recommanded to develop a script or find one online (https://github.com/vishnubob/wait-for-it) and execute it
 in the docker container entrypoint/command.
 
+### Corner cases
+A direct impact from the lack of tests is that a few corner cases only were tested,
+specifically regarding the API response on bad input for instance.
+There is probably some places where some conditional checks should be added. 
+
 
 ## Explanations/Decisions on this project
 The choices regarding the technology (Python, Flask framework for the APIs, Postgresql for a database...) were made exclusively because I feel the
