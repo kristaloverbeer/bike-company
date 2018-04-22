@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  gateway:
+    container_name: gateway
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./:/src
+    networks:
+      - zoov
+    environment: &environment
+      - LOGGING_LEVEL=DEBUG
+      - BIKE_SERVICE=http://bike:8081
+      - TRIP_SERVICE=http://trip:8082
+    ports:
+      - "8080:8080"
+    command: >
+      gunicorn --log-level debug --access-logfile - --capture-output --workers 4 --reload --bind 0.0.0.0:8080 wsgi:api
+
+networks:
+  zoov:
+    external:
+      name: zoov

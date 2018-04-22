@@ -4,8 +4,10 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/bike" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/trip" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/gateway" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (zoov)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="manakin-api" />
   </component>
 </module>
