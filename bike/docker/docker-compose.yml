@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+  bike:
+    container_name: bike
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./:/src
+    networks:
+      - zoov
+    depends_on:
+      - bike_database
+    environment: &environment
+      - LOGGING_LEVEL=DEBUG
+      - POSTGRES_HOST=bike_database
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=zoov
+      - POSTGRES_PASSWORD=zoov
+      - POSTGRES_DB=bike
+    ports:
+      - "8081:8081"
+    # TODO: We should have a wait-for-database script in the command to ensure the database is ready before starting the API
+    command: >
+      gunicorn --log-level debug --access-logfile - --capture-output --workers 4 --reload --bind 0.0.0.0:8081 wsgi:api
+
+  bike_database:
+    container_name: bike_database
+    image: postgres:9.6-alpine
+    environment: *environment
+    restart: always
+    ports:
+      - "5433:5432"
+    networks:
+      - zoov
+
+networks:
+  zoov:
+    external:
+      name: zoov

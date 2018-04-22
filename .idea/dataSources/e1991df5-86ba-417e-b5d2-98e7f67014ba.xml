@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="trip">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.8">
+    <root id="1">
+      <ServerVersion>9.6.8</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="trip">
+      <ObjectId>16384</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12404</ObjectId>
+    </database>
+    <role id="4" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="5" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <role id="6" parent="1" name="zoov">
+      <ObjectId>16385</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <schema id="7" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-04-22.18:00:28.759</IntrospectionTimestamp>
+      <IntrospectionStateNumber>549</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="8" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="12" parent="2" name="information_schema">
+      <ObjectId>12116</ObjectId>
+    </schema>
+    <table id="13" parent="7" name="alembic_version">
+      <ObjectId>16386</ObjectId>
+      <StateNumber>548</StateNumber>
+    </table>
+    <table id="14" parent="7" name="trip">
+      <ObjectId>16391</ObjectId>
+      <StateNumber>549</StateNumber>
+    </table>
+    <column id="15" parent="13" name="version_num">
+      <Position>1</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>548</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="16" parent="13" name="alembic_version_pkc">
+      <ObjectId>16389</ObjectId>
+      <ColNames>version_num</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="17" parent="13" name="alembic_version_pkc">
+      <ObjectId>16390</ObjectId>
+      <ColNames>version_num</ColNames>
+      <UnderlyingIndexName>alembic_version_pkc</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="18" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>549</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="19" parent="14" name="status">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>549</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="20" parent="14" name="bike_id">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>549</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="21" parent="14" name="locations">
+      <Position>4</Position>
+      <DataType>json[]|0s</DataType>
+      <StateNumber>549</StateNumber>
+      <TypeId>199</TypeId>
+    </column>
+    <column id="22" parent="14" name="started_at">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>549</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="23" parent="14" name="ended_at">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>549</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="24" parent="14" name="trip_pkey">
+      <ObjectId>16397</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="14" name="trip_pkey">
+      <ObjectId>16398</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>trip_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

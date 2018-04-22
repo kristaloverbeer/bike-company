@@ -1,0 +1,42 @@
+version: "3.3"
+
+services:
+  trip:
+    container_name: trip
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./:/src
+    networks:
+      - zoov
+    depends_on:
+      - trip_database
+    environment: &environment
+      - LOGGING_LEVEL=DEBUG
+      - BIKE_SERVICE=http://bike:8081
+      - POSTGRES_HOST=trip_database
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=zoov
+      - POSTGRES_PASSWORD=zoov
+      - POSTGRES_DB=trip
+    ports:
+      - "8082:8082"
+    # TODO: We should have a wait-for-database script in the command to ensure the database is ready before starting the API
+    command: >
+      gunicorn --log-level debug --access-logfile - --capture-output --workers 4 --reload --bind 0.0.0.0:8082 wsgi:api
+
+  trip_database:
+    container_name: trip_database
+    image: postgres:9.6-alpine
+    environment: *environment
+    restart: always
+    ports:
+      - "5434:5432"
+    networks:
+      - zoov
+
+networks:
+  zoov:
+    external:
+      name: zoov
